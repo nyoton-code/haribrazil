@@ -4,14 +4,14 @@ export const heroSlides = [
     image: "/images/hero/Hero1.jpg",
     subtitle: "Iconic Look",
     title: "HAIR BRAZIL",
-    location: "AGADIR · SINCE 2025",
+    location: "AGADIR · SINCE 2020",
   },
   {
     id: 2,
     image: "/images/hero/Hero2.jpg",
     subtitle: "Luxury Salon",
     title: "STYLE",
-    location: "PARIS · SINCE 2006",
+    location: "AGADIR · SINCE 2020",
   },
 //   {
 //     id: 3,
