@@ -31,7 +31,7 @@ const fadeUp = {
     y: 0,
     transition: {
       duration: 0.8,
-      ease: [0.22, 1, 0.36, 1],
+      ease: [0.22, 1, 0.36, 1] as any,
     },
   },
 };
@@ -77,7 +77,7 @@ export default function SplitShowcase() {
               <motion.div
                 className="absolute inset-0 overflow-hidden"
                 animate={{ scale: isActive ? 1.08 : 1 }}
-                transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] as any }}
               >
                 <Image
                   src={panel.image}
