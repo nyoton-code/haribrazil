@@ -10,7 +10,7 @@ export default function SlideContent({ slide }: any) {
         initial={{ opacity: 0, scale: 1.05, x: 120 }}
         animate={{ opacity: 1, scale: 1, x: 0 }}
         exit={{ opacity: 0, scale: 1.02, x: -120 }}
-        transition={{ duration: 1.05, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ duration: 1.05, ease: [0.22, 1, 0.36, 1] as any }}
         className="relative h-screen text-center"
       >
         {/* Background */}
@@ -23,7 +23,7 @@ export default function SlideContent({ slide }: any) {
           exit={{ scale: 1.08, filter: "blur(5px)" }}
           transition={{
             duration: 1.5,
-            ease: [0.22, 1, 0.36, 1],
+            ease: [0.22, 1, 0.36, 1] as any,
           }}
           className="absolute inset-0 h-full w-full object-cover"
         />
@@ -32,7 +32,7 @@ export default function SlideContent({ slide }: any) {
           initial={{ x: "-18%", opacity: 0.2 }}
           animate={{ x: "0%", opacity: 1 }}
           exit={{ x: "18%", opacity: 0.2 }}
-          transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] as any }}
           className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/30 to-black/60"
         />
 
