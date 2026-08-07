@@ -13,7 +13,7 @@ const panels = [
     description:
       "Experience bespoke hair transformations, precision color techniques, and luxury treatments crafted by certified professionals.",
     button: "Discover Salon",
-    image: "/images/cavar3.jpg",
+    image: "/images/salon.jpg",
     href: "/salon",
   },
   {
