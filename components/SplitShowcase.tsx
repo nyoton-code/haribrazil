@@ -1,118 +1,201 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
 import { useState } from "react";
 
 const panels = [
   {
-    title: "SALON",
+    eyebrow: "HAIR BRASIL",
+    title: "Salon Experience",
     description:
-      "Transform your hair with luxury styling, color, and professional care.",
-    button: "Explore Salon",
-    image: "/images/salon.jpg",
+      "Experience bespoke hair transformations, precision color techniques, and luxury treatments crafted by certified professionals.",
+    button: "Discover Salon",
+    image: "/images/cavar3.jpg",
     href: "/salon",
   },
   {
-    title: "HOME",
+    eyebrow: "PROFESSIONAL COLLECTION",
+    title: "Luxury Home Care",
     description:
-      "Discover professional products to maintain your salon results at home.",
-    button: "Shop Products",
+      "Maintain salon-quality results with our exclusive professional formulas inspired by Brazilian beauty expertise.",
+    button: "Explore Products",
     image: "/images/product1.jpg",
     href: "/shop",
   },
 ];
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 60 },
+const container = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.12,
+    },
+  },
+};
+
+const cubicBezierEase = [0.22, 1, 0.36, 1] as any;
+
+const panelAnimation = {
+  hidden: {
+    opacity: 0,
+    y: 80,
+  },
   visible: {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.8,
-      ease: [0.22, 1, 0.36, 1] as any,
+      duration: 0.9,
+      ease: cubicBezierEase,
     },
   },
 };
 
 export default function SplitShowcase() {
-  const [hoveredPanel, setHoveredPanel] = useState<number | null>(null);
-
-  const handlePanelBlur = (
-    event: React.FocusEvent<HTMLElement>,
-    index: number,
-  ) => {
-    if (!event.currentTarget.contains(event.relatedTarget as Node)) {
-      setHoveredPanel(null);
-    }
-  };
+  const [hovered, setHovered] = useState<number | null>(null);
 
   return (
-    <motion.section
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.3 }}
-      variants={fadeUp}
-      className="relative mx-auto flex h-screen w-full max-w-[1800px] flex-col px-4 py-8 sm:px-6 lg:px-8"
-    >
-      <div className="flex h-full flex-col gap-6 overflow-hidden rounded-[32px] bg-black md:flex-row">
-        {panels.map((panel, index) => {
-          const isActive = hoveredPanel === index;
-          const flexValue = hoveredPanel === null ? 1 : isActive ? 1.857 : 1;
+    <section className="relative bg-black py-24 md:py-32">
+      <div className="mx-auto max-w-[1700px] px-5">
+        {/* Section Heading */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="mb-20 text-center"
+        >
+          <p className="mb-5 text-xs uppercase tracking-[0.5em] text-white/40">
+            EXPERIENCE HAIR BRASIL
+          </p>
 
-          return (
-            <motion.article
-              key={panel.title}
-              role="group"
-              tabIndex={0}
-              aria-label={`${panel.title} showcase panel`}
-              onMouseEnter={() => setHoveredPanel(index)}
-              onMouseLeave={() => setHoveredPanel(null)}
-              onFocus={() => setHoveredPanel(index)}
-              onBlur={(event) => handlePanelBlur(event, index)}
-              style={{ flex: flexValue }}
-              className="relative flex min-h-[45vh] flex-1 flex-col justify-end overflow-hidden bg-zinc-950 transition-all duration-[600ms] ease-[cubic-bezier(.22,1,.36,1)] focus:outline-none focus-visible:ring-2 focus-visible:ring-white/80 focus-visible:ring-offset-4 focus-visible:ring-offset-black"
-            >
-              <motion.div
-                className="absolute inset-0 overflow-hidden"
-                animate={{ scale: isActive ? 1.08 : 1 }}
-                transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] as any }}
+          <h2 className="mx-auto max-w-4xl text-5xl font-light leading-tight text-white md:text-7xl">
+            Beauty begins with
+            <br />
+            <span className="italic font-serif">exceptional craftsmanship</span>
+          </h2>
+        </motion.div>
+
+        <motion.div
+          variants={container}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="flex h-[800px] flex-col overflow-hidden rounded-[36px] border border-white/10 bg-zinc-950 md:flex-row"
+        >
+          {panels.map((panel, index) => {
+            const active = hovered === index;
+            const flex = hovered === null ? 1 : active ? 1.8 : 1;
+
+            return (
+              <motion.article
+                key={panel.title}
+                variants={panelAnimation}
+                style={{ flex }}
+                onMouseEnter={() => setHovered(index)}
+                onMouseLeave={() => setHovered(null)}
+                className="group relative flex overflow-hidden transition-all duration-700"
               >
-                <Image
-                  src={panel.image}
-                  alt={panel.title}
-                  fill
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  className="object-cover"
-                  priority={index === 0}
-                />
-              </motion.div>
-
-              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/24 to-transparent transition-colors duration-700 ease-[cubic-bezier(.22,1,.36,1)] group-hover:from-black/95" />
-
-              <div className="relative z-10 flex flex-col gap-6 p-6 pb-8 md:p-10">
-                <div className="max-w-[320px] text-white/80">
-                  <h2 className="text-[clamp(4rem,10vw,9rem)] font-black leading-[0.9] tracking-[-0.05em] text-white transition-transform duration-700 ease-[cubic-bezier(.22,1,.36,1)] group-hover:-translate-y-2">
-                    {panel.title}
-                  </h2>
-                  <p className="mt-4 max-w-[320px] text-sm leading-6 text-white/80 sm:text-base">
-                    {panel.description}
-                  </p>
-                </div>
-
-                <Link
-                  href={panel.href}
-                  aria-label={panel.button}
-                  className="inline-flex w-fit rounded-full bg-white px-8 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-black transition duration-300 ease-[cubic-bezier(.22,1,.36,1)] hover:shadow-[0_20px_60px_rgba(255,255,255,0.12)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-4 focus-visible:ring-offset-black group-hover:scale-105"
+                {/* IMAGE */}
+                <motion.div
+                  animate={{ scale: active ? 1.08 : 1 }}
+                  transition={{ duration: 1, ease: cubicBezierEase }}
+                  className="absolute inset-0"
                 >
-                  {panel.button}
-                </Link>
-              </div>
-            </motion.article>
-          );
-        })}
+                  <Image
+                    src={panel.image}
+                    alt={panel.title}
+                    fill
+                    priority={index === 0}
+                    className="object-cover"
+                  />
+                </motion.div>
+
+                {/* LUXURY OVERLAY */}
+                <motion.div
+                  animate={{
+                    background: active
+                      ? "linear-gradient(to top, rgba(0,0,0,.92), rgba(0,0,0,.30), rgba(0,0,0,.08))"
+                      : "linear-gradient(to top, rgba(0,0,0,.82), rgba(0,0,0,.25), rgba(0,0,0,.05))",
+                  }}
+                  transition={{ duration: 0.6 }}
+                  className="absolute inset-0"
+                />
+
+                <div className="absolute right-0 top-10 hidden h-[85%] w-px bg-white/10 md:block" />
+
+                {/* Content */}
+                <div className="relative z-20 flex h-full flex-col justify-between p-8 md:p-12">
+                  <div>
+                    <motion.p
+                      animate={{
+                        y: active ? -4 : 0,
+                        opacity: active ? 1 : 0.7,
+                      }}
+                      transition={{ duration: 0.5 }}
+                      className="mb-6 text-[11px] uppercase tracking-[0.45em] text-white/60"
+                    >
+                      {panel.eyebrow}
+                    </motion.p>
+                  </div>
+
+                  <div className="max-w-md">
+                    <motion.h3
+                      animate={{ y: active ? -12 : 0 }}
+                      transition={{ duration: 0.6, ease: cubicBezierEase }}
+                      className="text-5xl md:text-7xl font-light leading-[0.95] tracking-[-0.04em] text-white"
+                    >
+                      {panel.title}
+                    </motion.h3>
+
+                    <motion.p
+                      animate={{
+                        opacity: active ? 1 : 0.88,
+                        y: active ? -6 : 0,
+                      }}
+                      transition={{ duration: 0.6 }}
+                      className="mt-8 max-w-sm text-[15px] leading-8 text-white/70"
+                    >
+                      {panel.description}
+                    </motion.p>
+
+                    <motion.div
+                      animate={{ y: active ? -8 : 0 }}
+                      transition={{ duration: 0.6 }}
+                      className="mt-10 flex items-center gap-6"
+                    >
+                      <Link
+                        href={panel.href}
+                        className="group/button inline-flex items-center gap-3 rounded-full border border-white/30 bg-white/5 px-7 py-4 text-xs uppercase tracking-[0.35em] text-white backdrop-blur-xl transition-all duration-500 hover:border-white hover:bg-white hover:text-black"
+                      >
+                        {panel.button}
+                        <ArrowUpRight className="h-4 w-4 transition-transform duration-500 group-hover/button:translate-x-1 group-hover/button:-translate-y-1" />
+                      </Link>
+                    </motion.div>
+
+                    <AnimatePresence>
+                      {active && (
+                        <motion.div
+                          initial={{ opacity: 0, y: 20 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: 20 }}
+                          transition={{ duration: 0.45 }}
+                          className="mt-10 flex items-center gap-4 text-xs uppercase tracking-[0.3em] text-white/40"
+                        >
+                          <div className="h-px w-12 bg-white/30" />
+                          Premium Brazilian Beauty
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                </div>
+              </motion.article>
+            );
+          })}
+        </motion.div>
       </div>
-    </motion.section>
+    </section>
   );
 }
