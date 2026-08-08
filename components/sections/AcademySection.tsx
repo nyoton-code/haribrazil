@@ -1,15 +1,8 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-
-const features = [
-  { number: "01", title: "PROFESSIONAL TRAINING" },
-  { number: "02", title: "CERTIFIED EDUCATORS" },
-  { number: "03", title: "BRAZILIAN EXPERTISE" },
-];
 
 export default function AcademySection() {
   const shouldReduceMotion = useReducedMotion();
@@ -106,36 +99,6 @@ export default function AcademySection() {
             </div>
           </motion.div>
         </div>
-
-        <motion.div
-          initial={shouldReduceMotion ? false : { opacity: 0, y: 18 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.8, delay: 0.15, ease: "easeOut" }}
-          className="grid gap-3 border-t border-white/10 pt-8 md:grid-cols-3"
-        >
-          {features.map((feature, index) => (
-            <motion.div
-              key={feature.title}
-              initial={shouldReduceMotion ? false : { opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{
-                duration: 0.6,
-                delay: 0.08 * index,
-                ease: "easeOut",
-              }}
-              className="border border-white/10 bg-white/5 px-5 py-5"
-            >
-              <p className="text-[10px] uppercase tracking-[0.4em] text-white/45">
-                {feature.number}
-              </p>
-              <p className="mt-3 text-sm font-semibold uppercase tracking-[0.3em] text-white">
-                {feature.title}
-              </p>
-            </motion.div>
-          ))}
-        </motion.div>
       </div>
     </section>
   );

@@ -3,7 +3,8 @@ import Hero from "@/components/hero/hero";
 import AboutProduct from "@/components/AboutProduct";
 import SplitShowcase from "@/components/SplitShowcase";
 import AcademySection from "@/components/sections/AcademySection";
-import TransformationsSection from "@/components/sections/TransformationsSection";
+import ProfessionalCollection from "@/components/sections/ProfessionalCollection";
+import PastProjectsSection from "@/components/sections/PastProjectsSection";
 
 export default function Home() {
   return (
@@ -13,7 +14,8 @@ export default function Home() {
       <AboutProduct />
       <SplitShowcase />
       <AcademySection />
-      <TransformationsSection />
+      <PastProjectsSection />
+      <ProfessionalCollection />
     </main>
   );
 }
