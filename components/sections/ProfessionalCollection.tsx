@@ -57,7 +57,7 @@ export default function ProfessionalCollection() {
     <section
       id="professional-collection"
       aria-labelledby="professional-collection-heading"
-      className="overflow-hidden bg-[#faf9f6] py-12 text-black sm:py-14 md:py-16"
+      className="overflow-hidden bg-[#faf9f7] py-12 text-black sm:py-14 md:py-16"
     >
       <div className="mx-auto flex max-w-6xl flex-col gap-7 px-5 sm:px-6 md:px-8 lg:px-10">
         <motion.div

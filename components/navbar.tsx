@@ -6,16 +6,17 @@ import { Menu, Search, ShoppingBag } from "lucide-react";
 
 const links = [
   { name: "HOME", href: "/" },
-  { name: "PAGES", href: "/pages" },
-  { name: "BLOG", href: "/blog" },
-  { name: "SHOP", href: "/shop" },
-  { name: "ELEMENTS", href: "/elements" },
+  { name: "PRODUCTS", href: "/pages" },
+  { name: "SALON", href: "/blog" },
+  { name: "ACADEMY", href: "/shop" },
+  { name: "ABOUT", href: "/elements" },
+  { name: "CONTACT", href: "/elements" },
 ];
 
 export default function Navbar() {
   return (
     <header className="absolute top-0 left-0 z-50 w-full">
-      <div className="mx-auto flex h-28 max-w-[1700px] items-center justify-between px-20">
+      <div className="mx-auto flex h-28 max-w-[1700px] items-center  justify-between px:5 lg:px-20">
         <Link href="/" className="flex items-center shrink-0">
           <Image
             src="/images/hero/logo1.png"
@@ -44,15 +45,13 @@ export default function Navbar() {
 
         {/* Right Side */}
         <div className="flex items-center">
-          <button className="border-l border-white/30 px-5 text-white">
+          {/* <button className="border-l border-white/30 px-5 text-white">
             <ShoppingBag size={22} strokeWidth={1.5} />
-          </button>
-
-          <span className="text-white text-sm">0</span>
-
+          </button> */}
+          {/* 
           <button className="border-l border-white/30 px-5 text-white">
             <Search size={22} strokeWidth={1.5} />
-          </button>
+          </button> */}
 
           <button className="border-l border-r border-white/30 px-5 text-white">
             <Menu size={28} strokeWidth={1.5} />

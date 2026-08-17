@@ -53,16 +53,16 @@ export default function AboutProduct() {
             transition={{ delay: 0.15 }}
             className="mb-6 uppercase tracking-[0.5em] text-sm text-neutral-500"
           >
-            DON'T MISS • BEST QUALITY
+            HAIR BRASIL • COLLECTION SIGNATURE
           </motion.p>
 
           <motion.h2
             initial={{ opacity: 0, y: 35 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
-            className="text-5xl font-black leading-none lg:text-7xl"
+            className="text-5xl font-black leading-none lg:text-6xl"
           >
-            NEW SHAMPOO!
+            LA COLLECTION CAVIAR!
           </motion.h2>
 
           <motion.p
@@ -71,9 +71,8 @@ export default function AboutProduct() {
             transition={{ delay: 0.45 }}
             className="mt-10 text-lg leading-10 text-neutral-700"
           >
-            Made to give your hair all the care it needs, our new product
-            combines the best ingredients and premium fragrances to leave your
-            hair healthy, soft and refreshed.
+            Des formules professionnelles inspirées de l’expertise Hair Brasil,
+            pour un rituel de soin d’exception.
           </motion.p>
 
           <motion.button

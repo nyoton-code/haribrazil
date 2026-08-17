@@ -1,31 +1,45 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { useState } from "react";
 
-const panels = [
+interface Panel {
+  eyebrow: string;
+  title: string;
+  accent: string;
+  description: string;
+  button: string;
+  image: string;
+  href: string;
+}
+
+const panels: Panel[] = [
   {
-    eyebrow: "HAIR BRASIL",
-    title: "Salon Experience",
+    eyebrow: "ACADEMY HAIR BRASIL",
+    title: "LE SAVOIR-FAIRE",
+    accent: "TRANSMIS.",
     description:
-      "Experience bespoke hair transformations, precision color techniques, and luxury treatments crafted by certified professionals.",
-    button: "Discover Salon",
+      "Des formations professionnelles guidées par la précision et l’expertise.",
+    button: "Découvrir l’Academy",
     image: "/images/salon.jpg",
     href: "/salon",
   },
   {
-    eyebrow: "PROFESSIONAL COLLECTION",
-    title: "Luxury Home Care",
+    eyebrow: "HAIR BRASIL · CAVIAR",
+    title: "LE SOIN",
+    accent: "ÉLEVÉ.",
     description:
-      "Maintain salon-quality results with our exclusive professional formulas inspired by Brazilian beauty expertise.",
-    button: "Explore Products",
+      "Une collection professionnelle pensée pour révéler la beauté du cheveu.",
+    button: "Découvrir Caviar",
     image: "/images/product1.jpg",
     href: "/shop",
   },
 ];
+
+const ease = [0.22, 1, 0.36, 1] as const;
 
 const container = {
   hidden: {},
@@ -36,19 +50,17 @@ const container = {
   },
 };
 
-const cubicBezierEase = [0.22, 1, 0.36, 1] as any;
-
 const panelAnimation = {
   hidden: {
     opacity: 0,
-    y: 80,
+    y: 40,
   },
   visible: {
     opacity: 1,
     y: 0,
     transition: {
       duration: 0.9,
-      ease: cubicBezierEase,
+      ease,
     },
   },
 };
@@ -57,51 +69,80 @@ export default function SplitShowcase() {
   const [hovered, setHovered] = useState<number | null>(null);
 
   return (
-    <section className="relative bg-black py-24 md:py-32">
-      <div className="mx-auto max-w-[1700px] px-5">
-        {/* Section Heading */}
+    <section className="bg-foreground px-5 py-20 sm:px-8 md:px-12 md:py-28">
+      <div className="mx-auto max-w-[1500px]">
+        {/* SECTION INTRO */}
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="mb-20 text-center"
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.8, ease }}
+          className="mb-10 md:mb-14"
         >
-          <p className="mb-5 text-xs uppercase tracking-[0.5em] text-white/40">
-            EXPERIENCE HAIR BRASIL
+          <p className="mb-4 text-[9px] font-medium uppercase tracking-[0.4em] text-white/45">
+            HAIR BRASIL / L’UNIVERS
           </p>
 
-          <h2 className="mx-auto max-w-4xl text-5xl font-light leading-tight text-white md:text-7xl">
-            Beauty begins with
+          <h2 className="max-w-4xl text-[clamp(2.7rem,6vw,6rem)] font-light leading-[0.88] tracking-[-0.055em] text-white">
+            L’expertise,
             <br />
-            <span className="italic font-serif">exceptional craftsmanship</span>
+            <span className="font-serif italic">à chaque geste.</span>
           </h2>
         </motion.div>
 
+        {/* PANELS */}
         <motion.div
           variants={container}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
-          className="flex h-[800px] flex-col overflow-hidden rounded-[36px] border border-white/10 bg-zinc-950 md:flex-row"
+          viewport={{ once: true, amount: 0.15 }}
+          className="
+            flex
+            flex-col
+            overflow-hidden
+            rounded-[26px]
+            border
+            border-white/10
+            bg-black
+            md:h-[680px]
+            md:flex-row
+          "
         >
           {panels.map((panel, index) => {
             const active = hovered === index;
-            const flex = hovered === null ? 1 : active ? 1.8 : 1;
 
             return (
               <motion.article
                 key={panel.title}
                 variants={panelAnimation}
-                style={{ flex }}
+                animate={{
+                  flex: hovered === null ? 1 : active ? 1.08 : 0.92,
+                }}
+                transition={{
+                  duration: 0.8,
+                  ease,
+                }}
                 onMouseEnter={() => setHovered(index)}
                 onMouseLeave={() => setHovered(null)}
-                className="group relative flex overflow-hidden transition-all duration-700"
+                className="
+                  group
+                  relative
+                  min-h-[520px]
+                  flex-1
+                  overflow-hidden
+                  sm:min-h-[580px]
+                  md:min-h-0
+                "
               >
                 {/* IMAGE */}
                 <motion.div
-                  animate={{ scale: active ? 1.08 : 1 }}
-                  transition={{ duration: 1, ease: cubicBezierEase }}
+                  animate={{
+                    scale: active ? 1.045 : 1,
+                  }}
+                  transition={{
+                    duration: 1.4,
+                    ease,
+                  }}
                   className="absolute inset-0"
                 >
                   <Image
@@ -109,6 +150,7 @@ export default function SplitShowcase() {
                     alt={panel.title}
                     fill
                     priority={index === 0}
+                    sizes="(max-width: 768px) 100vw, 50vw"
                     className="object-cover"
                   />
                 </motion.div>
@@ -116,79 +158,133 @@ export default function SplitShowcase() {
                 {/* LUXURY OVERLAY */}
                 <motion.div
                   animate={{
-                    background: active
-                      ? "linear-gradient(to top, rgba(0,0,0,.92), rgba(0,0,0,.30), rgba(0,0,0,.08))"
-                      : "linear-gradient(to top, rgba(0,0,0,.82), rgba(0,0,0,.25), rgba(0,0,0,.05))",
+                    opacity: active ? 0.88 : 0.76,
                   }}
-                  transition={{ duration: 0.6 }}
-                  className="absolute inset-0"
+                  transition={{ duration: 0.7 }}
+                  className="
+                    absolute
+                    inset-0
+                    bg-gradient-to-t
+                    from-black
+                    via-black/25
+                    to-black/5
+                  "
                 />
 
-                <div className="absolute right-0 top-10 hidden h-[85%] w-px bg-white/10 md:block" />
+                {/* DIVIDER */}
+                {index === 0 && (
+                  <div className="absolute bottom-10 right-0 top-10 hidden w-px bg-white/15 md:block" />
+                )}
 
-                {/* Content */}
-                <div className="relative z-20 flex h-full flex-col justify-between p-8 md:p-12">
-                  <div>
+                {/* CONTENT */}
+                <div
+                  className="
+                    relative
+                    z-10
+                    flex
+                    h-full
+                    flex-col
+                    justify-end
+                    p-6
+                    sm:p-8
+                    md:p-10
+                    lg:p-12
+                  "
+                >
+                  <div className="max-w-[520px]">
+                    {/* EYEBROW */}
                     <motion.p
                       animate={{
-                        y: active ? -4 : 0,
                         opacity: active ? 1 : 0.7,
                       }}
                       transition={{ duration: 0.5 }}
-                      className="mb-6 text-[11px] uppercase tracking-[0.45em] text-white/60"
+                      className="
+                        mb-5
+                        text-[8px]
+                        font-medium
+                        uppercase
+                        tracking-[0.4em]
+                        text-white/65
+                        sm:text-[9px]
+                      "
                     >
                       {panel.eyebrow}
                     </motion.p>
-                  </div>
 
-                  <div className="max-w-md">
-                    <motion.h3
-                      animate={{ y: active ? -12 : 0 }}
-                      transition={{ duration: 0.6, ease: cubicBezierEase }}
-                      className="text-5xl md:text-7xl font-light leading-[0.95] tracking-[-0.04em] text-white"
+                    {/* TITLE */}
+                    <h3
+                      className="
+                        text-[clamp(2.8rem,6vw,5.5rem)]
+                        font-light
+                        leading-[0.86]
+                        tracking-[-0.055em]
+                        text-white
+                      "
                     >
                       {panel.title}
-                    </motion.h3>
+                      <br />
+                      <span className="font-serif italic">{panel.accent}</span>
+                    </h3>
 
-                    <motion.p
-                      animate={{
-                        opacity: active ? 1 : 0.88,
-                        y: active ? -6 : 0,
-                      }}
-                      transition={{ duration: 0.6 }}
-                      className="mt-8 max-w-sm text-[15px] leading-8 text-white/70"
+                    {/* DESCRIPTION */}
+                    <p
+                      className="
+                        mt-6
+                        max-w-[390px]
+                        text-xs
+                        leading-6
+                        text-white/65
+                        sm:text-sm
+                        sm:leading-7
+                      "
                     >
                       {panel.description}
-                    </motion.p>
+                    </p>
 
-                    <motion.div
-                      animate={{ y: active ? -8 : 0 }}
-                      transition={{ duration: 0.6 }}
-                      className="mt-10 flex items-center gap-6"
+                    {/* CTA */}
+                    <Link
+                      href={panel.href}
+                      className="
+                        group/button
+                        mt-7
+                        inline-flex
+                        items-center
+                        gap-3
+                        rounded-full
+                        border
+                        border-white/30
+                        bg-white/5
+                        px-5
+                        py-3
+                        text-[8px]
+                        font-medium
+                        uppercase
+                        tracking-[0.28em]
+                        text-white
+                        backdrop-blur-md
+                        transition-all
+                        duration-500
+                        hover:border-white
+                        hover:bg-white
+                        hover:text-black
+                        sm:px-6
+                        sm:py-3.5
+                        sm:text-[9px]
+                      "
                     >
-                      <Link
-                        href={panel.href}
-                        className="group/button inline-flex items-center gap-3 rounded-full border border-white/30 bg-white/5 px-7 py-4 text-xs uppercase tracking-[0.35em] text-white backdrop-blur-xl transition-all duration-500 hover:border-white hover:bg-white hover:text-black"
-                      >
-                        {panel.button}
-                        <ArrowUpRight className="h-4 w-4 transition-transform duration-500 group-hover/button:translate-x-1 group-hover/button:-translate-y-1" />
-                      </Link>
-                    </motion.div>
+                      {panel.button}
 
-                    <AnimatePresence>
-                      {active && (
-                        <motion.div
-                          initial={{ opacity: 0, y: 20 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          exit={{ opacity: 0, y: 20 }}
-                          transition={{ duration: 0.45 }}
-                          className="mt-10 flex items-center gap-4 text-xs uppercase tracking-[0.3em] text-white/40"
-                        >
-                          <div className="h-px w-12 bg-white/30" />
-                          Premium Brazilian Beauty
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
+                      <ArrowUpRight
+                        className="
+                          h-3.5
+                          w-3.5
+                          transition-transform
+                          duration-500
+                          group-hover/button:translate-x-0.5
+                          group-hover/button:-translate-y-0.5
+                        "
+                      />
+                    </Link>
                   </div>
                 </div>
               </motion.article>

@@ -111,7 +111,7 @@ export default function PastProjectsSection() {
   }, [shouldReduceMotion]);
 
   return (
-    <section className="bg-black px-5 py-16 text-white sm:px-8 sm:py-20 lg:px-12 lg:py-24">
+    <section className="bg-foreground px-5 py-16 text-white sm:px-8 sm:py-20 lg:px-12 lg:py-24">
       <div className="mx-auto max-w-[1600px]">
         <motion.h2
           initial={shouldReduceMotion ? false : { opacity: 0, y: 20 }}

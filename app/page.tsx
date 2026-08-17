@@ -5,6 +5,9 @@ import SplitShowcase from "@/components/SplitShowcase";
 import AcademySection from "@/components/sections/AcademySection";
 import ProfessionalCollection from "@/components/sections/ProfessionalCollection";
 import PastProjectsSection from "@/components/sections/PastProjectsSection";
+import Reviews from "@/components/sections/Reviews";
+import Contact from "@/components/sections/Contact";
+import Footer from "@/components/sections/Footer";
 
 export default function Home() {
   return (
@@ -16,6 +19,9 @@ export default function Home() {
       <AcademySection />
       <PastProjectsSection />
       <ProfessionalCollection />
+      <Reviews />
+      <Contact />
+      {/* <Footer /> */}
     </main>
   );
 }

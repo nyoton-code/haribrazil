@@ -11,7 +11,7 @@ export default function AcademySection() {
     <section
       id="academy"
       aria-labelledby="academy-heading"
-      className="overflow-hidden bg-black py-24 text-white md:py-32 lg:py-40"
+      className="overflow-hidden bg-foreground py-24 text-white md:py-32 lg:py-40"
     >
       <div className="mx-auto flex max-w-7xl flex-col gap-12 px-6 md:px-8 lg:px-12">
         <div className="grid items-center gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:gap-16">
@@ -27,7 +27,7 @@ export default function AcademySection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7, delay: 0.06, ease: "easeOut" }}
-              className="mb-6 text-[11px] uppercase tracking-[0.45em] text-white/60"
+              className="mb-6 text-[10px] uppercase tracking-[0.45em] text-white/50"
             >
               ACADEMY HAIR BRASIL
             </motion.p>
@@ -38,11 +38,11 @@ export default function AcademySection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.12, ease: "easeOut" }}
-              className="text-4xl font-light leading-[0.9] tracking-[-0.03em] text-white sm:text-5xl lg:text-6xl xl:text-7xl"
+              className="text-4xl font-light leading-[0.9] tracking-[-0.04em] text-white sm:text-5xl lg:text-6xl xl:text-7xl"
             >
-              WHERE EXPERTISE
+              L&apos;EXPERTISE
               <br />
-              <span className="font-serif italic">BECOMES ART.</span>
+              <span className="font-serif italic">AU SERVICE DU GESTE.</span>
             </motion.h2>
 
             <motion.p
@@ -50,10 +50,10 @@ export default function AcademySection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-              className="mt-8 max-w-lg text-base leading-8 text-white/70 sm:text-lg"
+              className="mt-7 max-w-md text-sm leading-7 text-white/60 sm:text-base"
             >
-              Professional education for stylists who demand more from their
-              craft.
+              Des formations professionnelles pensées pour transmettre
+              précision, technique et savoir-faire.
             </motion.p>
 
             <motion.div
@@ -65,10 +65,10 @@ export default function AcademySection() {
             >
               <Link
                 href="#"
-                className="group mt-10 inline-flex items-center gap-3 border border-white/20 bg-white/5 px-7 py-4 text-[11px] font-semibold uppercase tracking-[0.35em] text-white transition-all duration-300 hover:border-white/40 hover:bg-white/10"
+                className="group mt-9 inline-flex items-center gap-3 border border-white/20 bg-white/5 px-6 py-3.5 text-[10px] font-medium uppercase tracking-[0.3em] text-white transition-all duration-300 hover:border-white/40 hover:bg-white/10"
               >
-                DISCOVER THE ACADEMY
-                <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
+                DÉCOUVRIR L&apos;ACADEMY
+                <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
               </Link>
             </motion.div>
           </motion.div>
