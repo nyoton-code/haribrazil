@@ -12,7 +12,7 @@ export const heroSlides = [
   },
   {
     id: 2,
-    image: "/images/hero/Hero6.jpg",
+    image: "/images/hero/hero6.jpg",
     subtitle: "L’ART DE LA TRANSFORMATION",
     title: "TANINO",
     location: "HAIR BRASIL · PROFESSIONNEL",
