@@ -34,7 +34,7 @@ const steps = [
       "Cette dernière étape restaure la douceur et laisse les cheveux lisses, lumineux et soyeux au toucher.",
     description:
       "Restaure la douceur et sublime la brillance pour une finition lisse et soignée.",
-    image: "/images/caviar/caviarMask3.png",
+    image: "/images/caviar/caviarmask3.png",
     texture: "/images/caviar/texture-coconut.jpg",
   },
 ];
