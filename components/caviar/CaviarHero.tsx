@@ -17,7 +17,7 @@ export default function CaviarHero() {
         }}
       >
         <Image
-          src="/images/caviar/Herocaviar5.jpg"
+          src="/images/caviar/herocaviar5.jpg"
           alt="Collection Black Caviar de Hair Brasil"
           fill
           priority
