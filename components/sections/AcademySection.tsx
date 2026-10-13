@@ -84,13 +84,14 @@ export default function AcademySection() {
             <div className="relative h-130 overflow-hidden rounded-[22px] sm:h-160 lg:h-180">
               <div className="absolute inset-0 z-10 bg-linear-to-t from-black/70 via-black/10 to-transparent" />
               <video
-                src="/images/salonvideo.mp4"
+                // src="/images/salonvideo.mp4"
+                src="https://res.cloudinary.com/f4crzod8/video/upload/v1791123496/salonvideo_gzg5mn.mp4"
                 autoPlay
                 muted
                 loop
                 playsInline
                 preload="metadata"
-                aria-label="Hair Brasil Academy training environment"
+                aria-label="Espace de formation de Hair Brasil Academy"
                 className="absolute inset-0 h-full w-full object-cover"
               />
               <div className="absolute left-5 top-5 z-20 rounded-full border border-white/20 bg-black/40 px-3 py-1 text-[10px] uppercase tracking-[0.35em] text-white/80">

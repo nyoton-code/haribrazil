@@ -18,33 +18,33 @@ interface ProjectItem {
 const projects: ProjectItem[] = [
   {
     src: "/images/transformations/result-01.png",
-    category: "STYLISTS",
-    title: "Not-so-new",
+    category: "COIFFEURS",
+    title: "Le renouveau",
   },
   {
     src: "/images/transformations/result-02.jpg",
-    category: "STYLISTS",
-    title: "Softening",
+    category: "COIFFEURS",
+    title: "Cheveux assouplis",
   },
   {
     src: "/images/transformations/result-03.jpg",
-    category: "STYLISTS",
-    title: "Curl Joy",
+    category: "COIFFEURS",
+    title: "Boucles sublimées",
   },
   {
     src: "/images/transformations/result-05.jpg",
-    category: "STYLISTS",
-    title: "Round-up",
+    category: "COIFFEURS",
+    title: "L’essentiel",
   },
   {
     src: "/images/transformations/result-06.jpg",
-    category: "STYLISTS",
-    title: "Gloss Line",
+    category: "COIFFEURS",
+    title: "Éclat lumineux",
   },
   {
     src: "/images/transformations/result-07.jpg",
-    category: "STYLISTS",
-    title: "Undone",
+    category: "COIFFEURS",
+    title: "Naturellement",
   },
 ];
 
@@ -71,7 +71,7 @@ export default function PastProjectsSection() {
           >
             <Link
               href="#"
-              aria-label={`View ${item.title}`}
+              aria-label={`Voir ${item.title}`}
               className="block focus:outline-none focus-visible:ring-2 focus-visible:ring-white/60 focus-visible:ring-offset-2 focus-visible:ring-offset-black"
             >
               <div className="relative h-[320px] w-full overflow-hidden sm:h-[380px] md:h-[430px]">
@@ -120,7 +120,7 @@ export default function PastProjectsSection() {
           transition={{ duration: 0.7, ease }}
           className="mb-10 text-[clamp(2.8rem,7vw,5.5rem)] font-normal leading-[0.95] tracking-[-0.03em] text-white md:mb-14"
         >
-          Our Past Projects
+          Nos réalisations
         </motion.h2>
 
         <div className="overflow-hidden">

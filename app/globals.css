@@ -19,3 +19,58 @@ body {
   /* color: var(--foreground); */
   font-family: Arial, Helvetica, sans-serif;
 }
+
+
+
+
+/* ---- Preloader (paste into app/globals.css) ---- */
+.preloader-logo path {
+  fill: currentColor;
+  fill-opacity: 0;
+  stroke: currentColor;
+  stroke-width: 14;
+  stroke-linejoin: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation:
+    preloader-draw 1.3s cubic-bezier(0.65, 0, 0.35, 1) var(--d) forwards,
+    preloader-fill 0.7s ease calc(var(--d) + 1s) forwards;
+}
+
+@keyframes preloader-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes preloader-fill {
+  to {
+    fill-opacity: 1;
+    stroke-width: 0;
+  }
+}
+
+@keyframes preloader-breathe {
+  50% {
+    transform: scale(1.03);
+    opacity: 0.85;
+  }
+}
+
+@keyframes preloader-progress {
+  from {
+    transform: scaleX(0);
+  }
+
+  to {
+    transform: scaleX(0.92);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .preloader-logo path {
+    animation: none;
+    fill-opacity: 1;
+    stroke-dashoffset: 0;
+  }
+}

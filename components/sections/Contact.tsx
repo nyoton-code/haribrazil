@@ -2,6 +2,7 @@
 
 import { motion, useReducedMotion } from "framer-motion";
 import { ArrowUpRight, MessageCircle, Phone, MapPin } from "lucide-react";
+import { WHATSAPP_NUMBER } from "../tanino/taninoData";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -18,7 +19,7 @@ const contactCards = [
     title: "APPELEZ-NOUS",
     description: "Notre équipe est disponible pour répondre à vos questions.",
     action: "APPELER HAIR BRASIL",
-    href: "tel:+212695147677",
+    href: `tel:+${WHATSAPP_NUMBER}`,
   },
   {
     icon: MapPin,
@@ -52,22 +53,23 @@ export default function Contact() {
           >
             {/* LABEL */}
             <p className="mb-5 text-[9px] uppercase tracking-[0.35em] text-black/45">
-              HAIR BRASIL / GET IN TOUCH
+              HAIR BRASIL / CONTACTEZ-NOUS
             </p>
 
             {/* TITLE */}
             <h2 className="max-w-[720px] text-[clamp(3.2rem,6.5vw,6.5rem)] font-light leading-[0.86] tracking-[-0.065em] text-black">
-              LET&apos;S TALK.
+              PARLONS-EN.
               <br />
               <span className="font-serif italic">
-                WE&apos;RE HERE TO HELP.
+                NOUS SOMMES À VOTRE ÉCOUTE.
               </span>
             </h2>
 
             {/* DESCRIPTION */}
             <p className="mt-6 max-w-[430px] text-sm leading-6 text-black/55 sm:text-[15px]">
-              Whether you are looking for professional hair products, advice, or
-              want to visit Hair Brasil, our team is here to help.
+              Vous recherchez des soins capillaires professionnels, un conseil
+              ou souhaitez rendre visite à Hair Brasil ? Notre équipe est à
+              votre écoute.
             </p>
 
             {/* MAP */}
@@ -79,7 +81,7 @@ export default function Contact() {
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5824.972870054622!2d-9.580859125163302!3d30.401648674745587!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xdb3b7dc460ea285%3A0x6be1890bf2bd9e3d!2sAcademy%20hair%20brasil!5e1!3m2!1sfr!2sma!4v1786297760227!5m2!1sfr!2sma"
                 className="absolute inset-0 h-full w-full border-0 grayscale-[20%]"
                 loading="lazy"
-                title="Hair Brasil location"
+                title="Emplacement de Hair Brasil"
               />
 
               {/* MAP OVERLAY */}

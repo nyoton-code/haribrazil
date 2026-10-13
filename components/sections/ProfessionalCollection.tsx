@@ -18,13 +18,13 @@ interface Product {
 
 const products: Product[] = [
   {
-    src: "/images/products/tannino-shampoo.png",
-    category: "TANNINO TECHNIQUE",
+    src: "/images/products/tanino-shampoo.png",
+    category: "TANINO TECHNIQUE",
     title: "HYDRATING SHAMPOO",
   },
   {
-    src: "/images/products/tannino-protein.png",
-    category: "TANNINO TECHNIQUE",
+    src: "/images/products/tanino-protein.png",
+    category: "TANINO TECHNIQUE",
     title: "BRAZILIAN PROTEIN",
   },
   {
@@ -49,7 +49,7 @@ const overlayVariants = {
 
 export default function ProfessionalCollection() {
   const shouldReduceMotion = useReducedMotion();
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [, setActiveIndex] = useState(0);
   const prevRef = useRef<HTMLButtonElement | null>(null);
   const nextRef = useRef<HTMLButtonElement | null>(null);
 
@@ -69,20 +69,22 @@ export default function ProfessionalCollection() {
         >
           <div className="max-w-2xl">
             <p className="mb-3 text-[10px] uppercase tracking-[0.4em] text-black/60">
-              HAIR BRASIL / PROFESSIONAL COLLECTION
+              HAIR BRASIL / COLLECTION PROFESSIONNELLE
             </p>
             <h2
               id="professional-collection-heading"
               className="text-[clamp(2.8rem,5vw,4.8rem)] font-light leading-[0.92] tracking-[-0.03em] text-black"
             >
-              <span className="block">THE RITUAL</span>
-              <span className="font-serif italic">BEHIND THE RESULT.</span>
+              <span className="block">LE RITUEL</span>
+              <span className="font-serif italic">
+                À L’ORIGINE DU RÉSULTAT.
+              </span>
             </h2>
           </div>
 
           <p className="max-w-md text-sm leading-6 text-black/70 sm:text-base">
-            Professional formulas designed for beautiful hair, in the salon and
-            at home.
+            Des formules professionnelles pour sublimer les cheveux, au salon
+            comme à la maison.
           </p>
         </motion.div>
 
@@ -92,7 +94,7 @@ export default function ProfessionalCollection() {
             <button
               ref={prevRef}
               type="button"
-              aria-label="Previous product"
+              aria-label="Produit précédent"
               className="flex h-10 w-10 items-center justify-center rounded-full border border-black/15 bg-white/90 text-black shadow-sm backdrop-blur transition-all duration-300 hover:border-black/30 hover:bg-white focus:outline-none focus-visible:ring-2 focus-visible:ring-black/40"
             >
               <ArrowRight className="h-4 w-4 rotate-180" />
@@ -100,7 +102,7 @@ export default function ProfessionalCollection() {
             <button
               ref={nextRef}
               type="button"
-              aria-label="Next product"
+              aria-label="Produit suivant"
               className="flex h-10 w-10 items-center justify-center rounded-full border border-black/15 bg-white/90 text-black shadow-sm backdrop-blur transition-all duration-300 hover:border-black/30 hover:bg-white focus:outline-none focus-visible:ring-2 focus-visible:ring-black/40"
             >
               <ArrowRight className="h-4 w-4" />
@@ -109,12 +111,7 @@ export default function ProfessionalCollection() {
 
           <Swiper
             modules={[Navigation, Autoplay]}
-            navigation={{
-              // eslint-disable-next-line react-hooks/refs
-              prevEl: prevRef.current,
-              // eslint-disable-next-line react-hooks/refs
-              nextEl: nextRef.current,
-            }}
+            navigation
             onBeforeInit={(swiper: SwiperInstance) => {
               // @ts-expect-error - swiper types expect navigation to already hold these
               swiper.params.navigation.prevEl = prevRef.current;
@@ -166,10 +163,10 @@ export default function ProfessionalCollection() {
                       </p> */}
 
                       <Link
-                        href="#"
+                        href={item.category === "BLACK CAVIAR" ? "/caviar" : "/tanino"}
                         className="group/link inline-flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.3em] text-black transition-colors duration-300 hover:text-black/70"
                       >
-                        DISCOVER PRODUCT
+                        DÉCOUVRIR LE PRODUIT
                         <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover/link:translate-x-1 group-hover/link:-translate-y-1" />
                       </Link>
                     </motion.div>
@@ -202,7 +199,7 @@ export default function ProfessionalCollection() {
             href="#"
             className="group flex items-center gap-3 text-[9px] font-medium uppercase tracking-[0.3em] text-black transition-opacity hover:opacity-60 focus:outline-none focus-visible:ring-2 focus-visible:ring-black/40 focus-visible:ring-offset-2 focus-visible:ring-offset-[#faf9f6]"
           >
-            View All Products
+            Voir tous les produits
             <span className="flex h-7 w-7 items-center justify-center rounded-full border border-black/20 transition-transform duration-300 group-hover:translate-x-1">
               <ArrowUpRight className="h-3 w-3" />
             </span>
